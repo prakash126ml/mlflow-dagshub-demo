@@ -2,7 +2,7 @@ import pandas as pd
 import mlflow.sklearn
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -26,15 +26,15 @@ n_estimators = 20
 
 mlflow.set_experiment("iris_dt")
 #apply mlflow to train
-with mlflow.start_run(run_name="pk_exp_with_confusion_matrix_log_artifact"):
+with mlflow.start_run(run_name="pk_exp_with_confusion_matrix_log_artifact_randomforest"):
     mlflow.log_param("max_depth", max_depth)
     # mlflow.log_param("n_estimators", n_estimators)
 
-    dt = DecisionTreeClassifier(max_depth=max_depth)
-    dt.fit(X_train, y_train)
+    rf = RandomForestClassifier(max_depth=max_depth, n_estimators=n_estimators)
+    rf.fit(X_train, y_train)
 
     # Evaluate the model
-    y_pred = dt.predict(X_test)
+    y_pred = rf.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
     mlflow.log_metric("accuracy", accuracy)
 
