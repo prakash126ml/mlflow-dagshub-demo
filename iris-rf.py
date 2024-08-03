@@ -24,7 +24,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 max_depth = 10
 n_estimators = 20
 
-mlflow.set_experiment("iris_dt")
+mlflow.set_experiment("iris_rf")
 #apply mlflow to train
 with mlflow.start_run(run_name="pk_exp_with_confusion_matrix_log_artifact_randomforest"):
     mlflow.log_param("max_depth", max_depth)
@@ -48,8 +48,8 @@ with mlflow.start_run(run_name="pk_exp_with_confusion_matrix_log_artifact_random
     plt.title('Confusion matrix')
 
     #save the confusion matrix
-    plt.savefig("confusion_matrix.png")
-    mlflow.log_artifact("confusion_matrix.png")
+    plt.savefig("confusion_matrix_rf.png")
+    mlflow.log_artifact("confusion_matrix_rf.png")
 
     #log the model
     mlflow.log_artifact(__file__)
