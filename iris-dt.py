@@ -48,8 +48,8 @@ with mlflow.start_run(run_name="pk_exp_with_confusion_matrix_log_artifact"):
     plt.title('Confusion matrix')
 
     #save the confusion matrix
-    plt.savefig("confusion_matrix.png")
-    mlflow.log_artifact("confusion_matrix.png")
+    plt.savefig("confusion_matrix_dt.png")
+    mlflow.log_artifact("confusion_matrix_dt.png")
 
     #log the model
     mlflow.log_artifact(__file__)
