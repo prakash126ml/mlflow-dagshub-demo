@@ -53,8 +53,8 @@ with mlflow.start_run(run_name="pk_exp_with_confusion_matrix_log_artifact_random
 
     #log the model
     mlflow.log_artifact(__file__)
-    mlflow.sklearn.log_model(dt, "decision_tree_model")    
+    mlflow.sklearn.log_model(rf, "random_forest_model")    
 
-    mlflow.set_tag('author', 'prakash')
+    mlflow.set_tag('author', 'prince')
     mlflow.set_tag('project', 'iris-classification')
-    mlflow.set_tag('algorithm', 'decision-tree')
+    mlflow.set_tag('algorithm', 'random-forest')
